@@ -5,16 +5,17 @@ export default class TodoItem extends Component {
     console.log(e.target.checked)
   }
   render() {
-    const { title, isCompleted } = this.props.task;
+    const { id, title, isCompleted } = this.props.task;
+    
     return (
       <React.Fragment>
         {/* <h6>TodoItem</h6> */}
         <p style={{
           textDecoration: (isCompleted) ? 'line-through' : 'none'
         }}>
-          <input type="checkbox" onChange={this.toggleComplete} />
+          <input checked={isCompleted} type="checkbox" onChange={this.props.toggleComplete.bind(this, id)} />
           {title}</p>
-
+        
       </React.Fragment>
     );
   }
